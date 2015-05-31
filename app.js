@@ -10,6 +10,7 @@ var config = require('./config.json');
 /**
  * Express Routes
  */
+app.use(require('express').static(__dirname + '/public'));
 app.get('/', function(req, res){
 	res.render('index.ejs');
 })
@@ -18,21 +19,18 @@ app.get('/', function(req, res){
  * Socket.Io Setup
  */
 io.on('connection', function (socket) {
-  //socket.emit('news', { hello: 'world' });
-  //socket.on('my other event', function (data) {
-  //  console.log(data);
-  //});
-  socket.emit('login', {password: true});
-  socket.on('login', function(data){
-  	if (password === config.betapassword)
-  	{
-  		socket.emit('loginsuccess');
-  	}
-  	else
-  	{
-  		socket.emit('loginfail');
-  	}
-  });
+  console.log(socket.client.conn.remoteAddress + ' has connected!');
+  // socket.emit('login', {password: true});
+  // socket.on('login', function(data){
+  // 	if (password === config.betapassword)
+  // 	{
+  // 		socket.emit('loginsuccess');
+  // 	}
+  // 	else
+  // 	{
+  // 		socket.emit('loginfail');
+  // 	}
+  // });
 });
 
 /**
