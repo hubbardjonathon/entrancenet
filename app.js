@@ -6,7 +6,7 @@ var app = require('express')(),
 	io = require('socket.io')(server);
 
 var config = require('./config.json');
-
+var db = require('./app/db')(config);
 /**
  * Express Routes
  */
