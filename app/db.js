@@ -13,5 +13,15 @@ module.exports = function(config){
 		timestamps: false
 	});
 
+	module.exports.bans = bans = db.define('bans', {
+		handle: sql.STRING,
+		ip: sql.STRING,
+		fingerprint: sql.STRING,
+		isPermanent: sql.BOOLEAN,
+		expiration: sql.DATE
+	}, {
+		timestamps: false
+	});
+
 	db.sync({force:true});
 }
